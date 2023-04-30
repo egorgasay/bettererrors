@@ -54,3 +54,21 @@ func (e *BetterError) JSON() []byte {
 
 	return marshal
 }
+
+func (e *BetterError) JSONIdent(prefix, ident string) []byte {
+	marshal, err := json.MarshalIndent(e, prefix, ident)
+	if err != nil {
+		log.Println("json.Marshal:", err)
+	}
+
+	return marshal
+}
+
+func (e *BetterError) JSONPretty() []byte {
+	marshal, err := json.MarshalIndent(e, "", "  ")
+	if err != nil {
+		log.Println("json.Marshal:", err)
+	}
+
+	return marshal
+}
