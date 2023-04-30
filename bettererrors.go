@@ -8,6 +8,9 @@ import (
 
 type IBetterError interface {
 	JSON() []byte
+	JSONIdent(prefix, ident string) []byte
+	JSONPretty() []byte
+
 	SetTime() IBetterError
 	SetAppLayer(layer string) IBetterError
 }
